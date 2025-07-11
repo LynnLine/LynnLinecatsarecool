@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Carousel with Titles</title>
+  <link rel="stylesheet" href="sm.css">
+<style>
+  .carousel-container {
+    width: 520px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    text-align: center;
+  }
+
+  .carousel-image {
+    width: 500px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .carousel-title {
+    background: #333;
+    color: white;
+    padding: 10px;
+    font-size: 1.2rem;
+    margin: 15px 0;
+  }
+
+  .carousel-buttons {
+    margin-top: 15px;
+  }
+
+  .carousel-buttons button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin: 0 10px;
+    cursor: pointer;
+  }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #f0f0f0;
+      height: 100vh;
+
+      /* Center carousel horizontally and vertically */
+      margin: 0;
+    }
+
+    .carousel {
+      width: 700px; /* bigger carousel */
+      overflow: hidden;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+      min-width: 100%;
+      text-align: center;
+    }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .title {
+      padding: 10px;
+      font-size: 18px;
+      background: #333;
+      color: #fff;
+    }
+
+    .buttons {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .buttons button {
+      padding: 10px 20px;
+      margin: 0 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .row {
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+   <nav>    
+        <a href="index.html">Home</a>
+        <a href="Carousel.html">Pictures of motorcycles</a>
+        <a href="Table.html">Table of Motorcycle</a>
+        <a href="Map.html">Map</a>
+    </nav>
+  <div class="row">
+    <div class="carousel">
+      <div class="slides" id="slides">
+        <div class="slide">
+          <img src="Images/2023-bmw-m1000r-official-008_480x480.webp"/>
+          <div class="title">Bmw M100R #1</div>
+        </div>
+        <div class="slide">
+          <img src="Images/motorcycle-tyres-for-ducati-panigale-v4-r-6609.jpg"/>
+          <div class="title">Ducati panigale V4 SP2 #2</div>
+        </div>
+        <div class="slide">
+          <img src="Images/images.jpeg"/>
+          <div class="title">Yamaha R1 #3</div>
+        </div>
+        <div class="slide">
+          <img src="Images/Transalp-XL750.webp"/>
+          <div class="title">Translap 750 #3</div>
+        </div>
+      </div>
+      <div class="buttons">
+        <button onclick="prevSlide()">Prev</button>
+        <button onclick="nextSlide()">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentIndex = 0;
+    const slides = document.getElementById('slides');
+    const totalSlides = document.querySelectorAll('.slide').length;
+
+    function updateSlide() {
+      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateSlide();
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      updateSlide();
+    }
+  </script>
+</body>
+</html>
